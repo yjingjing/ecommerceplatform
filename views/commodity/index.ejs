@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<%- include('../common/header.ejs') %>
+	<title>商品管理</title>
+</head>
+<body>
+	<%- include('../common/top.ejs') %>
+	<div class="l-content">
+		<%- include('../common/left.ejs') %>
+		<div class="l-right">
+			<div class="l-right-wrap">
+				<div class="text-right">
+					<a href="/commodity/add" class="btn" role="button">添加商品</a>
+				</div>
+				<table class="table table-bordered text-center">
+					<tr class="thead">
+						<td>序号</td>
+						<td>名称</td>
+						<td>价格</td>
+						<td>图片</td>
+						<td>分类</td>
+						<td>剩余天数</td>
+						<td>折扣</td>
+						<td>库存</td>
+						<td>操作</td>
+					</tr>
+					<% for(var i in commodities){if(!commodities[i].name)continue;%>
+						<tr>
+							<td><%=parseInt(i)+1%></td>
+							<td><%=commodities[i].name%></td>
+							<td><%=commodities[i].price%></td>
+							<td><img src="/images/<%=commodities[i].imgSrc%>" width="100" height="100" alt="" /></td>
+							<td><%=commodities[i].catagoryName%></td>
+							<td><%=commodities[i].remainTime%></td>
+							<td><%=commodities[i].discount%></td>
+							<td><%=commodities[i].stockNum%></td>
+							<td><a href="/commodity/edit/<%=commodities[i]._id%>">修改</a><a href="">删除</a></td>
+						</tr>
+					<%}%>
+				</table>
+				<nav aria-label="Page navigation" class="text-center">
+			  		<ul class="pagination">
+			  			<%if(isFirstPage==false){%>
+				  		<li>
+					      <a href="/commodity/<%=parseInt(pageNum)-1%>" aria-label="Previous">
+					        <span aria-hidden="true">上一页</span>
+					      </a>
+					    </li>
+					  	<%}else{%>
+				  		<li>
+					      <a href="javascript:void(0);" aria-label="Previous">
+					        <span aria-hidden="true">上一页</span>
+					      </a>
+					    </li>
+					  	<%}%>
+						<%for(var i=0;i<totalPage;i++){%>
+					    	<%if(i==pageNum){%>
+					    	<li class="active"><span><span aria-hidden="true"><%=parseInt(i)+1%></span></span></li>
+					    	<%}else{%>
+					    	<li><a href="/commodity/<%=i%>"><%=parseInt(i)+1%></a></li>
+					    	<%}%>
+					    <%}%>
+					    <%if(isFirstPage==false){%>
+				  		<li>
+					      <a href="/commodity/<%=parseInt(pageNum)-1%>" aria-label="Previous">
+					        <span aria-hidden="true">上一页</span>
+					      </a>
+					    </li>
+					  	<%}else{%>
+				  		<li>
+					      <a href="javascript:void(0);" aria-label="Previous">
+					        <span aria-hidden="true">上一页</span>
+					      </a>
+					    </li>
+					  	<%}%>
+			    	</ul>
+			    </nav>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

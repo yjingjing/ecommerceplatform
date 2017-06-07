@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<%- include('../common/header.ejs') %>
+	<title>权限管理</title>
+</head>
+<body>
+	<%- include('../common/top.ejs') %>
+	<div class="l-content">
+		<%- include('../common/left.ejs') %>
+		<div class="l-right">
+			<div class="l-right-wrap">
+				<div class="text-right">
+					<a href="/authority/add" class="btn" role="button">添加权限</a>
+				</div>
+				<table class="table table-bordered text-center">
+					<tr class="thead">
+						<td>序号</td>
+						<td>名称</td>
+						<td>url</td>
+						<td>操作</td>
+					</tr>
+					<% for(var i in authorities){if(!authorities[i].name)continue;%>
+						<tr>
+							<td><%=parseInt(i)+1%></td>
+							<td><%=authorities[i].name%></td>
+							<td><%=authorities[i].url%></td>
+							<td><a href="/authority/edit/<%=authorities[i]._id%>">修改</a><a href="">删除</a></td>
+						</tr>
+					<%}%>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

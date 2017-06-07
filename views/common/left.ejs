@@ -1,0 +1,11 @@
+<div class="l-left">
+	<div class="l-left-wrap">
+		<ul class="side_nav list-unstyled">
+			<%if(menus){%>
+				<%for(var i in menus){if(!menus[i].name)continue;%>
+					<li><a href="<%=menus[i].url%>"><%=menus[i].name%></a></li>
+				<%}%>
+			<%}%>
+		</ul>
+	</div>
+</div>

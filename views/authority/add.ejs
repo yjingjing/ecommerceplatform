@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<%- include('../common/header.ejs') %>
+	<title>添加权限</title>
+</head>
+<body>
+	<%- include('../common/top.ejs') %>
+	<div class="l-content">
+		<%- include('../common/left.ejs') %>
+		<div class="l-right">
+			<div class="l-right-wrap">
+				<form action="/authority/add" method="post" class="form-horizontal">
+					<div class="input-group">
+						<span class="input-group-addon">名称</span>
+						<input type="text" name="name" class="form-control" />
+					</div>
+					<div class="input-group">
+						<span class="input-group-addon">路径</span>
+						<input type="text" name="url" class="form-control" />
+					</div>
+					<div class="input-group">
+						<input type="submit" value="添加" class="btn btn-block" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

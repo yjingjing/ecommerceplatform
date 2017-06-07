@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<%- include('../common/header.ejs') %>
+	<title>分类管理</title>
+</head>
+<body>
+	<%- include('../common/top.ejs') %>
+	<div class="l-content">
+		<%- include('../common/left.ejs') %>
+		<div class="l-right">
+			<div class="l-right-wrap">
+				<div class="text-right">
+					<a href="/catagory/add" class="btn" role="button">添加分类</a>
+				</div>
+				<table class="table table-bordered text-center">
+					<tr class="thead">
+						<td>序号</td>
+						<td>中文名称</td>
+						<td>英文名称</td>
+						<td>操作</td>
+					</tr>
+					<% for(var i in catagories){if(!catagories[i].cname)continue;%>
+						<tr>
+							<td><%=parseInt(i)+1%></td>
+							<td><%=catagories[i].cname%></td>
+							<td><%=catagories[i].ename%></td>
+							<td><a href="/catagory/edit/<%=catagories[i]._id%>">修改</a><a href="">删除</a></td>
+						</tr>
+					<%}%>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

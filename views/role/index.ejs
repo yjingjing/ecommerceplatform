@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<%- include('../common/header.ejs') %>
+	<title>角色管理</title>
+</head>
+<body>
+	<%- include('../common/top.ejs') %>
+	<div class="l-content">
+		<%- include('../common/left.ejs') %>
+		<div class="l-right">
+			<div class="l-right-wrap">
+				<div class="text-right">
+					<a href="/role/add" class="btn" role="button">添加角色</a>
+				</div>
+				<table class="table table-bordered text-center">
+					<tr class="thead">
+						<td>序号</td>
+						<td>名称</td>
+						<td>操作</td>
+					</tr>
+					<% for(var i in roles){if(!roles[i].name)continue;%>
+						<tr>
+							<td><%=parseInt(i)+1%></td>
+							<td><%=roles[i].name%></td>
+							<td><a href="/role/edit/<%=roles[i]._id%>">修改</a><a href="/role/delete/<%=roles[i]._id%>">删除</a><a href="/role/distribute/<%=roles[i]._id%>">分配权限</a></td>
+						</tr>
+					<%}%>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

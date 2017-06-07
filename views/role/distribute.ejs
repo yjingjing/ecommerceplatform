@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<%- include('../common/header.ejs') %>
+	<title>分配权限</title>
+</head>
+<body>
+	<%- include('../common/top.ejs') %>
+	<div class="l-content">
+		<%- include('../common/left.ejs') %>
+		<div class="l-right">
+			<div class="l-right-wrap">
+				<p class="text-center">为<%=role.name%>分配权限</p>
+				<form action="/role/distribute" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="roleId" value="<%=role._id%>" />
+					<% for(var i in allAuthorities){%>
+						<%if(allAuthorities[i].roleIds.indexOf(role._id)>-1){%>
+						<input type="checkbox" name="allAuthorities[<%=i%>]" id="<%=allAuthorities[i]._id%>" value="<%=allAuthorities[i]._id%>" checked/><label for="<%=allAuthorities[i]._id%>"><%=allAuthorities[i].name%></label>
+						<%}else{%>
+						<input type="checkbox" name="allAuthorities[<%=i%>]" id="<%=allAuthorities[i]._id%>" value="<%=allAuthorities[i]._id%>" /><label for="<%=allAuthorities[i]._id%>"><%=allAuthorities[i].name%></label>
+						<%}%>
+					<% } %>
+					<div class="input-group">
+						<input type="submit" value="提交" />
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
