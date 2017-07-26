@@ -42,9 +42,11 @@
 				</table>
 				<nav aria-label="Page navigation" class="text-center">
 			  		<ul class="pagination">
+			  			<%=isFirstPage%>
+			  			<%=isLastPage%>
 			  			<%if(isFirstPage==false){%>
 				  		<li>
-					      <a href="/commodity/<%=parseInt(pageNum)-1%>" aria-label="Previous">
+					      <a href="/commodity?p=<%=parseInt(pageNum)-1%>" aria-label="Previous">
 					        <span aria-hidden="true">上一页</span>
 					      </a>
 					    </li>
@@ -59,12 +61,12 @@
 					    	<%if(i==pageNum){%>
 					    	<li class="active"><span><span aria-hidden="true"><%=parseInt(i)+1%></span></span></li>
 					    	<%}else{%>
-					    	<li><a href="/commodity/<%=i%>"><%=parseInt(i)+1%></a></li>
+					    	<li><a href="/commodity?p=<%=i%>"><%=parseInt(i)+1%></a></li>
 					    	<%}%>
 					    <%}%>
 					    <%if(isFirstPage==false){%>
 				  		<li>
-					      <a href="/commodity/<%=parseInt(pageNum)-1%>" aria-label="Previous">
+					      <a href="/commodity?p=<%=parseInt(pageNum)-1%>" aria-label="Previous">
 					        <span aria-hidden="true">上一页</span>
 					      </a>
 					    </li>

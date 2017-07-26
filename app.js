@@ -35,7 +35,6 @@ app.use(function(req,res,next){
 	res.locals.error=req.flash('error').toString();
 	res.locals.role=req.flash('role');
 	res.locals.ramanagers=req.flash('ramanagers');
-//	res.locals.menus=req.flash('menus');
 	res.locals.menus=req.session.menus;
 	next();
 });

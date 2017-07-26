@@ -44,7 +44,7 @@ exports.Catagory=mongolass.model('Catagory',{
 	ename:{type:'string'}
 });
 exports.Catagory.index({_id:1}).exec();
-exports.Commodity=mongolass.model('Commodity',{
+exports.Caommodity=mongolass.model('Caommodity',{
 	name:{type:'string'},
 	price:{type:'number'},
 	imgSrc:{type:'string'},
@@ -57,4 +57,4 @@ exports.Commodity=mongolass.model('Commodity',{
 	commodityWeight:{type:'number'},
 	commodityLocation:{type:'string'}
 });
-exports.Commodity.index({_id:1}).exec();
+exports.Caommodity.index({_id:1}).exec();

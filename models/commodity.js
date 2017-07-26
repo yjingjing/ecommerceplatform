@@ -1,4 +1,4 @@
-var Commodity=require('../common/mongo').Commodity;
+var Commodity=require('../common/mongo').Caommodity;
 var Catagory=require('./catagory');
 Commodity.plugin('addCatagoryName',{
 	afterFind:function(commodities){
@@ -24,7 +24,7 @@ module.exports={
 		return Commodity.create(commodity).exec();
 	},
 	getCommodities:function(page){
-		return Commodity.find().skip(page*5).limit(5).addCreatedAt().addCatagoryName().exec();
+		return Commodity.find().skip(page*1).limit(1).addCreatedAt().addCatagoryName().exec();
 	},
 	getCommoditiesCount:function(){
 		return Commodity.count().exec();

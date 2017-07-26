@@ -5,23 +5,28 @@ var fs=require('fs');
 var Commodity=require('../models/commodity');
 var Catagory=require('../models/catagory');
 router.get('/',function(req,res,next){
-	res.redirect('/commodity/0');
+	var pageNum=req.query.p||0;
+	handlerRouter(req,res,next,pageNum);
 });
-router.get('/:pageNum',function(req,res,next){
-	var pageNum=req.params.pageNum;
+function handlerRouter(req,res,next,pageNum){
 	Commodity.getCommodities(pageNum).then(function(commodities){
 		Commodity.getCommoditiesCount().then(function(count){
-			var totalPage=Math.ceil(count/5);
+			var totalPage=Math.ceil(count/1);
+			console.log(pageNum);
 			res.render('commodity/index',{
 				commodities:commodities,
 				pageNum:pageNum,
-				isFirstPage:pageNum==0,
-				isLastPage:(pageNum+1)==totalPage,
+				isFirstPage:pageNum==0||pageNum==totalPage,
+				isLastPage:pageNum==totalPage||(pageNum+1)==totalPage,
 				totalPage:totalPage
 			});
 		});
 	}).catch(next);
-});
+}
+//router.get('/:pageNum',function(req,res,next){
+//	var pageNum=req.params.pageNum;
+//	
+//});
 router.get('/add',function(req,res,next){
 	Catagory.getCatagories().then(function(catagories){
 		res.render('commodity/add',{catagories:catagories});
